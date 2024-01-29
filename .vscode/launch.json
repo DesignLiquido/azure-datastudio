@@ -12,6 +12,34 @@
 	"version": "0.2.0",
     "configurations": [
         {
+            "type": "sqlopsExtensionHost",
+            "request": "attach",
+            "name": "Attach Extension",
+            "runtimeExecutable": "azuredatastudio",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm: watch",
+            "timeout": 15000
+        },
+        {
+            "type": "sqlopsExtensionHost",
+            "request": "launch",
+            "name": "Launch Extension - Insiders",
+            "runtimeExecutable": "azuredatastudio-insiders",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm: watch",
+            "timeout": 15000
+        },
+        {
             "name": "Extension",
             "type": "sqlopsExtensionHost",
             "request": "launch",
@@ -39,6 +67,42 @@
             ],
             "preLaunchTask": "npm: watch",
             "timeout": 30000
+        },
+        {
+            "name": "SqlOps Extension",
+            "type": "sqlopsExtensionHost",
+            "request": "launch",
+            "runtimeExecutable": "azuredatastudio-insiders",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceRoot}"
+            ],
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/out/**/*.js"
+            ],
+            "preLaunchTask": "",
+            "timeout": 25000
+        },
+        {
+            "name": "Azure Data Studio Extension",
+            "type": "sqlopsExtensionHost",
+            "request": "launch",
+            "windows": {
+                "runtimeExecutable": "${env:ADS_DEV}/scripts/sql.bat",
+            },
+            "osx": {
+                "runtimeExecutable": "$ADS_DEV/scripts/sql.sh"
+            },
+            "linux": {
+                "runtimeExecutable": "$ADS_DEV/scripts/sql.sh"
+            },
+            "args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "outFiles": [ "${workspaceRoot}/out/**/*.js" ],
+            "preLaunchTask": "",
+            "timeout": 25000
         }
     ]
 }
